@@ -59,16 +59,21 @@ behat-suite: ## Run Behat tests
 	$(SYMFONY_PHP) vendor/bin/behat --suite=$(suite)
 .PHONY: behat-suite
 
-phpunit: ## Run PHPUnit tests
-	$(SYMFONY_PHP) vendor/bin/phpunit
-.PHONY: phpunit
+unit-tests: ## Run PHPUnit tests
+	$(SYMFONY_PHP) vendor/bin/phpunit --testsuite unit_tests
+.PHONY: unit-tests
+
+int-tests: ## Run PHPUnit tests
+	$(SYMFONY_PHP) vendor/bin/phpunit --testsuite int_tests
+.PHONY: int-tests
 
 phpunit-filter: ## Run PHPUnit tests
 	$(SYMFONY_PHP) vendor/bin/phpunit --filter=$(filter)
 .PHONY: phpunit-filter
 
 test: ## Run all the tests
-	$(MAKE) phpunit
+	$(MAKE) unit-tests
+	$(MAKE) int-tests
 	$(MAKE) behat-progress
 .PHONY: test
 

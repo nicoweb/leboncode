@@ -12,9 +12,13 @@ services:
     resource: '%kernel.user_dir%/'
     exclude:
       - '%kernel.user_dir%/*/Domain/{Error|Model|ValueObject|Entity}/'
+      - '%kernel.user_dir%/*/Infrastructure/**/InMemory*.php'
 
   _instanceof:
     NicolasLefevre\LeBonCode\Core\Domain\CommandHandler:
       tags: [ 'messenger.message_handler' ]
     NicolasLefevre\LeBonCode\Core\Presentation\Action:
       tags: [ 'controller.service_arguments' ]
+
+  Symfony\Component\PasswordHasher\Hasher\NativePasswordHasher: ~
+  Symfony\Component\PasswordHasher\PasswordHasherInterface: '@Symfony\Component\PasswordHasher\Hasher\NativePasswordHasher'

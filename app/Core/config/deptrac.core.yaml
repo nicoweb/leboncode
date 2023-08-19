@@ -30,7 +30,7 @@ deptrac:
     - name: Vendor
       collectors:
         - type: className
-          regex: ^(Symfony|OpenApi|Doctrine|Defuse|Firebase|Nelmio)\\.*
+          regex: ^(Symfony|OpenApi|Doctrine|Defuse|Firebase|Nelmio|Gedmo)\\.*
   ruleset:
     Core\Domain: ~
     Core\Application:

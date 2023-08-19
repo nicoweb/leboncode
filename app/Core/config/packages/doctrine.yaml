@@ -13,7 +13,7 @@ doctrine:
             Core:
                 is_bundle: false
                 dir: '%kernel.core_dir%/Infrastructure/Persistence/Doctrine/Entity'
-                prefix: 'Core\Infrastructure\Persistence\Doctrine\Entity'
+                prefix: 'NicolasLefevre\LeBonCode\Core\Infrastructure\Persistence\Doctrine\Entity'
                 alias: Core
 
 when@test:

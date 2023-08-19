@@ -46,8 +46,11 @@ jobs:
       - name: Start database
         run: make db-reset-test
 
-      - name: Run PHPUnit tests
-        run: make phpunit
+      - name: Run unit tests
+        run: make unit-tests
+
+      - name: Run integration tests
+        run: make int-tests
 
       - name: Start server
         run: make start
