@@ -1,0 +1,3 @@
+actions:
+    resource: '../../Module/**/Presentation/*Action.php'
+    type: attribute

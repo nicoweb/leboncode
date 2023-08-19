@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, labeled ]
+  push:
+    branches: [ main ]
+
+jobs:
+  QA:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: make build
+
+      - name: Install dependencies
+        run: make vendor
+
+      - name: Run Deptrac
+        run: make deptrac
+
+      - name: Run PHPStan
+        run: make phpstan
+
+      - name: Run Rector
+        run: make rector-ci
+
+      - name: Run PHP-CS-Fixer
+        run: make php-cs-fixer
+
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: make build
+
+      - name: Install dependencies
+        run: make vendor
+
+      - name: Start database
+        run: make db-reset-test
+
+      - name: Run PHPUnit tests
+        run: make phpunit
+
+      - name: Start server
+        run: make start
+
+      - name: Run Behat tests
+        run: make behat-progress
+
+      - name: Run security checker
+        run: make security

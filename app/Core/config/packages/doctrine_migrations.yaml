@@ -1,0 +1,4 @@
+doctrine_migrations:
+    migrations_paths:
+        'NicolasLefevre\LeBonCode\Core\Infrastructure\Persistence\Migration': '%kernel.core_dir%/Infrastructure/Persistence/Migration'
+    enable_profiler: false

@@ -1,0 +1,20 @@
+parameters:
+  kernel.user_dir: '%kernel.modules_dir%/User/src'
+  kernel.user_features_dir: '%kernel.modules_dir%/User/Features'
+  kernel.user_tests_dir: '%kernel.modules_dir%/User/tests'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  NicolasLefevre\LeBonCode\User\:
+    resource: '%kernel.user_dir%/'
+    exclude:
+      - '%kernel.user_dir%/*/Domain/{Error|Model|ValueObject|Entity}/'
+
+  _instanceof:
+    NicolasLefevre\LeBonCode\Core\Domain\CommandHandler:
+      tags: [ 'messenger.message_handler' ]
+    NicolasLefevre\LeBonCode\Core\Presentation\Action:
+      tags: [ 'controller.service_arguments' ]

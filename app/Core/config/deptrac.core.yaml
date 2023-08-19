@@ -1,0 +1,43 @@
+deptrac:
+  paths:
+    - app/Core/src
+  exclude_files: ~
+  layers:
+    - name: Core\Domain
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Core\\Domain\\.*
+    - name: Core\Application
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Core\\Application\\.*
+    - name: Core\Infrastructure
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Core\\Infrastructure\\.*
+    - name: Core\Presentation
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Core\\Presentation\\.*
+    - name: Vendor
+      collectors:
+        - type: className
+          regex: ^(Symfony|OpenApi|Doctrine|Defuse|Firebase|Nelmio)\\.*
+  ruleset:
+    Core\Domain: ~
+    Core\Application:
+      - Core\Domain
+    Core\Infrastructure:
+      - Core\Domain
+      - Vendor
+    Core\Presentation:
+      - Core\Domain
+      - Vendor

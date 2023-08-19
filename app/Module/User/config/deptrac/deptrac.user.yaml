@@ -1,0 +1,2 @@
+imports:
+  - { resource: 'register_user.yaml' }

@@ -1,0 +1,17 @@
+includes:
+   	- vendor/phpstan/phpstan-doctrine/extension.neon
+   	- vendor/phpstan/phpstan-doctrine/rules.neon
+   	- vendor/phpstan/phpstan-symfony/extension.neon
+   	- vendor/phpstan/phpstan-symfony/rules.neon
+   	- vendor/phpstan/phpstan-phpunit/extension.neon
+   	- vendor/phpstan/phpstan-phpunit/rules.neon
+   	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+   	- vendor/jangregor/phpstan-prophecy/extension.neon
+
+parameters:
+    level: 9
+    paths:
+        - app/Core/src
+        - app/Module
+    excludePaths:
+       - **.tpl.php

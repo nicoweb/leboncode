@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:8.0.32
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: leboncode
+      MYSQL_USER: leboncode
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - database_data:/var/lib/mysql:rw
+  php:
+    build:
+      dockerfile: .docker/php/Dockerfile
+    volumes:
+      - .:/var/www/html
+
+volumes:
+  database_data:

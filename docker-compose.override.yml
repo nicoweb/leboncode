@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  database:
+    ports:
+      - "3310:3306"
+  php:
+    environment:
+      XDEBUG_MODE: "debug"
+      XDEBUG_CLIENT_HOST: host.docker.internal
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - .:/var/www/html
+      - ./.docker/php/config/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini

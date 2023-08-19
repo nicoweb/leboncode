@@ -1,0 +1,6 @@
+twig:
+    default_path: '%kernel.core_dir%/Presentation/Template'
+
+when@test:
+    twig:
+        strict_variables: true

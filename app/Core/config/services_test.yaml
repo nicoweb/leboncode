@@ -1,0 +1,10 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    NicolasLefevre\LeBonCode\Core\Features\Context\:
+        resource: '%kernel.app_dir%/Core/Features/Context/'
+    NicolasLefevre\LeBonCode\User\Features\RegisterUser\RegisterUserContext: ~

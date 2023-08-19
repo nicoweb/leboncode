@@ -1,0 +1,16 @@
+parameters:
+    kernel.app_dir: '%kernel.project_dir%/app'
+    kernel.core_dir: '%kernel.app_dir%/Core/src'
+    kernel.modules_dir: '%kernel.app_dir%/Module'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    NicolasLefevre\LeBonCode\Core\:
+        resource: '%kernel.core_dir%/'
+        exclude:
+            - '%kernel.core_dir%/Domain/{Model|ValueObject|Error|Entity}/'
+            - '%kernel.core_dir%/Infrastructure/Framework/Kernel.php'
+            - '%kernel.core_dir%/Infrastructure/Persistence/Migration/'

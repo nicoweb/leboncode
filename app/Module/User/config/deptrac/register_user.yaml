@@ -1,0 +1,46 @@
+deptrac:
+  paths:
+    - app/Module/User/src/RegisterUser
+  exclude_files: ~
+  layers:
+    - name: RegisterUser\Domain
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\RegisterUser\\Domain\\.*
+    - name: RegisterUser\Application
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\RegisterUser\\Application\\.*
+    - name: RegisterUser\Infrastructure
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\RegisterUser\\Infrastructure\\.*
+    - name: RegisterUser\Presentation
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\RegisterUser\\Presentation\\.*
+  ruleset:
+    RegisterUser\Domain:
+      - Core\Domain
+    RegisterUser\Application:
+      - RegisterUser\Domain
+      - Core\Application
+      - Core\Domain
+    RegisterUser\Infrastructure:
+      - RegisterUser\Domain
+      - Core\Infrastructure
+      - Core\Domain
+      - Vendor
+    RegisterUser\Presentation:
+      - RegisterUser\Application
+      - Core\Presentation
+      - Core\Application
+      - Vendor

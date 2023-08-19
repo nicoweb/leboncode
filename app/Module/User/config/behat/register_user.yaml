@@ -1,0 +1,8 @@
+default:
+  suites:
+    register_user:
+      paths:
+        - '%paths.base%/app/Module/User/Features/RegisterUser'
+      contexts:
+        - NicolasLefevre\LeBonCode\Core\Features\Context\DoctrineContext
+        - NicolasLefevre\LeBonCode\User\Features\RegisterUser\RegisterUserContext

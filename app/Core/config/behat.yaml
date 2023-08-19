@@ -1,0 +1,22 @@
+default:
+  formatters:
+    pretty:
+      verbose: true
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      kernel:
+        environment: test
+        debug: true
+        class: 'NicolasLefevre\LeBonCode\Core\Infrastructure\Framework\Kernel'
+        path: '%paths.base%/app/Core/src/Infrastructure/Framework/Kernel.php'
+      bootstrap: 'tests/bootstrap.php'
+    Vanare\BehatCucumberJsonFormatter\Extension:
+      fileNamePrefix: report
+      resultFilePerSuite: true
+      outputDir: '%paths.base%/var/behat/reports'
+  suites:
+    core:
+      paths:
+        - '%paths.base%/app/Core/Features'
+      contexts:
+        - NicolasLefevre\LeBonCode\Core\Features\Context\KernelContext
