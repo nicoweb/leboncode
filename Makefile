@@ -1,6 +1,6 @@
 # Variables
 DOCKER_COMPOSE = docker compose
-DOCKER_COMPOSE_PHP = $(DOCKER_COMPOSE) exec -u devuser php
+DOCKER_COMPOSE_PHP = $(DOCKER_COMPOSE) exec php
 SYMFONY = $(DOCKER_COMPOSE_PHP) symfony
 CONSOLE = $(SYMFONY) console
 SYMFONY_PHP = $(SYMFONY) php
