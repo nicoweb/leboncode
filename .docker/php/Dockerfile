@@ -24,13 +24,6 @@ RUN curl -sS https://get.symfony.com/cli/installer | bash \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Create a non-root user to use when running the container
-RUN groupadd -g 1000 devuser && \
-    useradd -u 1000 -g devuser -m devuser && \
-    passwd -d devuser && \
-    adduser devuser sudo
-USER devuser
-
 # Set working directory
 WORKDIR /var/www/html
 
