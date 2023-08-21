@@ -1,0 +1,8 @@
+default:
+  suites:
+    authenticate_user:
+      paths:
+        - '%paths.base%/app/Module/User/Features/AuthenticateUser'
+      contexts:
+        - NicolasLefevre\LeBonCode\Core\Features\Context\DoctrineContext
+        - NicolasLefevre\LeBonCode\User\Features\AuthenticateUser\AuthenticateUserContext

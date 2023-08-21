@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject;
+namespace NicolasLefevre\LeBonCode\Core\Domain\ValueObject;
 
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\EmailValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\EmailValidationError;
 use Stringable;
 
 final readonly class Email implements Stringable

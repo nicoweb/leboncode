@@ -17,3 +17,6 @@ parameters:
        - **.tpl.php
        - **RepositoryTest.php
        - **/SymfonyPasswordHasherTest.php
+       - **/*Context.php
+    ignoreErrors:
+        - '#Unsafe usage of new static\(\)#'

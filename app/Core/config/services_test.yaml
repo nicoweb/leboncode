@@ -8,3 +8,4 @@ services:
     NicolasLefevre\LeBonCode\Core\Features\Context\:
         resource: '%kernel.app_dir%/Core/Features/Context/'
     NicolasLefevre\LeBonCode\User\Features\RegisterUser\RegisterUserContext: ~
+    NicolasLefevre\LeBonCode\User\Features\AuthenticateUser\AuthenticateUserContext: ~

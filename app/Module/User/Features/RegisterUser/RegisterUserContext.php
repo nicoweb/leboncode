@@ -6,7 +6,6 @@ namespace NicolasLefevre\LeBonCode\User\Features\RegisterUser;
 
 use Behat\Behat\Context\Context;
 use NicolasLefevre\LeBonCode\Core\Features\Context\CoreContext;
-use PHPUnit\Framework\Assert;
 
 final class RegisterUserContext extends CoreContext implements Context
 {
@@ -26,15 +25,5 @@ final class RegisterUserContext extends CoreContext implements Context
         $this->browser->request('POST', $path, [], [], [
             'CONTENT_TYPE' => 'application/json',
         ], $payload);
-    }
-
-    /**
-     * @Then /^the response status code should be (\d+)$/
-     */
-    public function theResponseStatusCodeShouldBe(string $expectedStatus): void
-    {
-        $statusCode = $this->browser->getResponse()->getStatusCode();
-
-        Assert::assertSame((int) $expectedStatus, $statusCode);
     }
 }

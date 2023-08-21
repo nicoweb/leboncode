@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace NicolasLefevre\LeBonCode\Core\Domain\Error;
 
 use DomainException;
+use NicolasLefevre\LeBonCode\Core\Domain\Violation\Violation;
 use NicolasLefevre\LeBonCode\Core\Domain\Violation\ViolationList;
 
-final class ValidationError extends DomainException
+class ValidationError extends DomainException
 {
     public ViolationList $violations;
 
@@ -15,6 +16,13 @@ final class ValidationError extends DomainException
     {
         $this->violations = new ViolationList();
         parent::__construct();
+    }
+
+    public function addViolation(Violation $violation): self
+    {
+        $this->violations->add($violation);
+
+        return $this;
     }
 
     public function addViolations(ViolationList $violationList): void

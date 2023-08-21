@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error;
+namespace NicolasLefevre\LeBonCode\Core\Domain\Error;
 
 use DomainException;
 use NicolasLefevre\LeBonCode\Core\Domain\Violation\Violation;
@@ -17,6 +17,7 @@ final class PasswordValidationError extends DomainException
     public const NO_LOWERCASE = 'no_lowercase';
     public const NO_UPPERCASE = 'no_uppercase';
     public const NO_SPECIAL_CHARACTER = 'no_special_character';
+    public const IS_EMPTY = 'is_empty';
 
     public readonly ViolationList $violations;
 

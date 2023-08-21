@@ -1,2 +1,3 @@
 imports:
   - { resource: 'register_user.yaml' }
+  - { resource: 'authenticate_user.yaml' }

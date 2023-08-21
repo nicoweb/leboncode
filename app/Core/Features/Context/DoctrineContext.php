@@ -29,7 +29,9 @@ final readonly class DoctrineContext implements Context
     {
         $purger = new ORMPurger($this->entityManager);
         $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
+        $this->entityManager->getConnection()->executeStatement('SET foreign_key_checks = 0;');
         $purger->purge();
+        $this->entityManager->getConnection()->executeStatement('SET foreign_key_checks = 1;');
     }
 
     /**

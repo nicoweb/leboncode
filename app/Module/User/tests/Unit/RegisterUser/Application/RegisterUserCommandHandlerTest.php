@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace NicolasLefevre\LeBonCode\User\Tests\Unit\RegisterUser\Application;
 
+use NicolasLefevre\LeBonCode\Core\Domain\Error\EmailValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\IdValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\PasswordValidationError;
 use NicolasLefevre\LeBonCode\Core\Domain\Error\ValidationError;
 use NicolasLefevre\LeBonCode\Core\Domain\Violation\ViolationList;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Application\RegisterUserCommand;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Application\RegisterUserCommandHandler;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Application\RegisterUserFactory;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\EmailAlreadyRegisteredValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\EmailValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\FirstnameValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\LastnameValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\PasswordValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\UserIdAlreadyExistsValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\UserIdValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\RegisterUserRepository\RegisterUserRepository;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Infrastructure\PasswordHasher\InMemoryHasher;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Infrastructure\Repository\InMemoryRegisterUserRepository;
@@ -46,7 +46,7 @@ final class RegisterUserCommandHandlerTest extends TestCase
             ));
             $this->fail('Expected ValidationException was not thrown.');
         } catch (ValidationError $e) {
-            $this->assertViolation($e->violations, 1, [[UserIdValidationError::MESSAGE => UserIdValidationError::PROPERTY_PATH]]);
+            $this->assertViolation($e->violations, 1, [[IdValidationError::MESSAGE => IdValidationError::PROPERTY_PATH]]);
         }
     }
 
