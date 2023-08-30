@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject;
 
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\PasswordValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\PasswordValidationError;
 use Stringable;
 
 final readonly class PlainPassword implements Stringable

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace NicolasLefevre\LeBonCode\User\Tests\Integration\RegisterUser\Infrastructure;
 
 use Doctrine\ORM\EntityManager;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\Email;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\HashedPassword;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\UserId;
 use NicolasLefevre\LeBonCode\Core\Infrastructure\Persistence\Doctrine\Entity\User;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Entity\RegisterUser;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\UserAlreadyExistsValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Email;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Firstname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\HashedPassword;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Lastname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\UserId;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Infrastructure\Repository\DoctrineRegisterUserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

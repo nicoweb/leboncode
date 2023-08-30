@@ -2,17 +2,27 @@ parameters:
   kernel.user_dir: '%kernel.modules_dir%/User/src'
   kernel.user_features_dir: '%kernel.modules_dir%/User/Features'
   kernel.user_tests_dir: '%kernel.modules_dir%/User/tests'
+  refresh_token_expiration: '%env(int:REFRESH_TOKEN_EXPIRATION)%'
+  jwt_access_token_expiration: '%env(int:JWT_ACCESS_TOKEN_EXPIRATION)%'
+  jwt_secret: '%env(string:JWT_SECRET_KEY)%'
+  jwt_algorithm: '%env(string:JWT_ALGORITHM)%'
 
 services:
   _defaults:
     autowire: true
     autoconfigure: true
+    bind:
+      $refreshTokenExpiration: '%refresh_token_expiration%'
+      $jwtAccessTokenExpiration: '%jwt_access_token_expiration%'
+      $jwtSecret: '%jwt_secret%'
+      $jwtAlgorithm: '%jwt_algorithm%'
+
 
   NicolasLefevre\LeBonCode\User\:
     resource: '%kernel.user_dir%/'
     exclude:
-      - '%kernel.user_dir%/*/Domain/{Error|Model|ValueObject|Entity}/'
-      - '%kernel.user_dir%/*/Infrastructure/**/InMemory*.php'
+      - '%kernel.user_dir%/*/Domain/{Error,Model,ValueObject,Entity}/'
+      - '%kernel.user_dir%/*/{Infrastructure,Application}/**/{InMemory,Stub}*.php'
 
   _instanceof:
     NicolasLefevre\LeBonCode\Core\Domain\CommandHandler:

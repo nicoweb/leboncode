@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error;
+namespace NicolasLefevre\LeBonCode\Core\Domain\Error;
 
 use DomainException;
 use NicolasLefevre\LeBonCode\Core\Domain\Violation\Violation;
@@ -21,7 +21,7 @@ abstract class SingleValidationError extends DomainException
         parent::__construct();
     }
 
-    public function withViolation(): self
+    public function withViolation(): static
     {
         $this->violations->add(
             Violation::create(static::PROPERTY_PATH, static::MESSAGE),
