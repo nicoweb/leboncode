@@ -46,11 +46,11 @@ jobs:
       - name: Install dependencies
         run: make vendor
 
-      - name: Start database
-        run: make db-reset-test
-
       - name: Run unit tests
         run: make unit-tests
+
+      - name: Start database
+        run: make db-reset-test
 
       - name: Run integration tests
         run: make int-tests
