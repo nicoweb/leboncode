@@ -58,8 +58,8 @@ jobs:
       - name: Start server
         run: make start
 
-      - name: Run Behat tests
-        run: make behat-progress
+      - name: Run e2e tests
+        run: make e2e-progress
 
       - name: Run security checker
         run: make security

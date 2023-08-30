@@ -1,2 +1,3 @@
 imports:
   - 'register_user.yaml'
+  - 'authenticate_user.yaml'

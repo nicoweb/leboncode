@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace NicolasLefevre\LeBonCode\User\RegisterUser\Application;
 
+use NicolasLefevre\LeBonCode\Core\Domain\Error\EmailValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\IdValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\Error\PasswordValidationError;
 use NicolasLefevre\LeBonCode\Core\Domain\Error\ValidationError;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\Email;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\UserId;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Entity\RegisterUser;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\EmailValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\FirstnameValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\LastnameValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\PasswordValidationError;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\UserIdValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\PasswordHasher\PasswordHasher;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Email;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Firstname;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Lastname;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\PlainPassword;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\UserId;
 
 final class RegisterUserFactory
 {
-    private ValidationError $validationException;
+    private ValidationError $validationError;
 
     public function __construct(
         private readonly PasswordHasher $passwordHasher,
@@ -42,7 +42,7 @@ final class RegisterUserFactory
 
     private function validateCommand(RegisterUserCommand $command): void
     {
-        $this->validationException = new ValidationError();
+        $this->validationError = new ValidationError();
 
         $this->validateUserId($command->id);
         $this->validateFirstname($command->firstname);
@@ -50,8 +50,8 @@ final class RegisterUserFactory
         $this->validateEmail($command->email);
         $this->validatePlainPassword($command->plainPassword);
 
-        if ($this->validationException->hasViolations()) {
-            throw $this->validationException;
+        if ($this->validationError->hasViolations()) {
+            throw $this->validationError;
         }
     }
 
@@ -59,8 +59,8 @@ final class RegisterUserFactory
     {
         try {
             UserId::validate($id);
-        } catch (UserIdValidationError $e) {
-            $this->validationException->addViolations($e->violations);
+        } catch (IdValidationError $e) {
+            $this->validationError->addViolations($e->violations);
         }
     }
 
@@ -69,7 +69,7 @@ final class RegisterUserFactory
         try {
             Firstname::validate($firstname);
         } catch (FirstnameValidationError $e) {
-            $this->validationException->addViolations($e->violations);
+            $this->validationError->addViolations($e->violations);
         }
     }
 
@@ -78,7 +78,7 @@ final class RegisterUserFactory
         try {
             Lastname::validate($lastname);
         } catch (LastnameValidationError $e) {
-            $this->validationException->addViolations($e->violations);
+            $this->validationError->addViolations($e->violations);
         }
     }
 
@@ -87,7 +87,7 @@ final class RegisterUserFactory
         try {
             Email::validate($email);
         } catch (EmailValidationError $e) {
-            $this->validationException->addViolations($e->violations);
+            $this->validationError->addViolations($e->violations);
         }
     }
 
@@ -96,7 +96,7 @@ final class RegisterUserFactory
         try {
             PlainPassword::validate($plainPassword);
         } catch (PasswordValidationError $e) {
-            $this->validationException->addViolations($e->violations);
+            $this->validationError->addViolations($e->violations);
         }
     }
 }

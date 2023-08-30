@@ -11,6 +11,8 @@ services:
     NicolasLefevre\LeBonCode\Core\:
         resource: '%kernel.core_dir%/'
         exclude:
-            - '%kernel.core_dir%/Domain/{Model|ValueObject|Error|Entity}/'
+            - '%kernel.core_dir%/Domain/{Model,ValueObject,Error,Entity}/'
             - '%kernel.core_dir%/Infrastructure/Framework/Kernel.php'
             - '%kernel.core_dir%/Infrastructure/Persistence/Migration/'
+            - '%kernel.core_dir%/{Infrastructure,Application}/**/{InMemory,Stub}*.php'
+
