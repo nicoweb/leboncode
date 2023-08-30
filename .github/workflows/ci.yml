@@ -46,11 +46,11 @@ jobs:
       - name: Install dependencies
         run: make vendor
 
-      - name: Start database
-        run: make db-reset-test
-
       - name: Run unit tests
         run: make unit-tests
+
+      - name: Start database
+        run: make db-reset-test
 
       - name: Run integration tests
         run: make int-tests
@@ -58,8 +58,8 @@ jobs:
       - name: Start server
         run: make start
 
-      - name: Run Behat tests
-        run: make behat-progress
+      - name: Run e2e tests
+        run: make e2e-progress
 
       - name: Run security checker
         run: make security

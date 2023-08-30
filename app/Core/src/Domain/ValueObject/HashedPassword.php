@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject;
+namespace NicolasLefevre\LeBonCode\Core\Domain\ValueObject;
 
 use Stringable;
 

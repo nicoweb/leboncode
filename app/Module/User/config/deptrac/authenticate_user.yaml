@@ -1,0 +1,46 @@
+deptrac:
+  paths:
+    - app/Module/User/src/AuthenticateUser
+  exclude_files: ~
+  layers:
+    - name: AuthenticateUser\Domain
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\AuthenticateUser\\Domain\\.*
+    - name: AuthenticateUser\Application
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\AuthenticateUser\\Application\\.*
+    - name: AuthenticateUser\Infrastructure
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\AuthenticateUser\\Infrastructure\\.*
+    - name: AuthenticateUser\Presentation
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\User\\AuthenticateUser\\Presentation\\.*
+  ruleset:
+    AuthenticateUser\Domain:
+      - Core\Domain
+    AuthenticateUser\Application:
+      - AuthenticateUser\Domain
+      - Core\Application
+      - Core\Domain
+    AuthenticateUser\Infrastructure:
+      - AuthenticateUser\Domain
+      - Core\Infrastructure
+      - Core\Domain
+      - Vendor
+    AuthenticateUser\Presentation:
+      - AuthenticateUser\Application
+      - Core\Presentation
+      - Core\Application
+      - Vendor
