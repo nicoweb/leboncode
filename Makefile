@@ -47,17 +47,17 @@ vendor: up ## Install the dependencies
 	$(COMPOSER) install --no-scripts --prefer-dist --no-progress --no-interaction
 
 # Tests
-behat: ## Run Behat tests
+e2e: ## Run e2e tests
 	$(SYMFONY_PHP) vendor/bin/behat
-.PHONY: behat
+.PHONY: e2e
 
-behat-progress: ## Run Behat tests
+e2e-progress: ## Run e2e tests
 	$(SYMFONY_PHP) vendor/bin/behat --format=progress
-.PHONY: behat-progress
+.PHONY: e2e-progress
 
-behat-suite: ## Run Behat tests
+e2e-suite: ## Run e2e tests
 	$(SYMFONY_PHP) vendor/bin/behat --suite=$(suite)
-.PHONY: behat-suite
+.PHONY: e2e-suite
 
 unit-tests: ## Run PHPUnit tests
 	$(SYMFONY_PHP) vendor/bin/phpunit --testsuite unit_tests
@@ -74,7 +74,7 @@ phpunit-filter: ## Run PHPUnit tests
 test: ## Run all the tests
 	$(MAKE) unit-tests
 	$(MAKE) int-tests
-	$(MAKE) behat-progress
+	$(MAKE) e2e-progress
 .PHONY: test
 
 deptrac: ## Run Deptrac
@@ -117,7 +117,7 @@ qa: ## Run all the QA tools
 	$(MAKE) security
 	$(MAKE) rector-ci
 	$(MAKE) phpunit
-	$(MAKE) behat-progress
+	$(MAKE) e2e-progress
 .PHONY: qa
 
 # Database

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Entity;
 
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Email;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\Email;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\HashedPassword;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\UserId;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Firstname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\HashedPassword;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Lastname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\UserId;
 
 final readonly class RegisterUser
 {

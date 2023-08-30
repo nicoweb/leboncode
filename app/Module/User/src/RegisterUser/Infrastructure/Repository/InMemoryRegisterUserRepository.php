@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace NicolasLefevre\LeBonCode\User\RegisterUser\Infrastructure\Repository;
 
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\Email;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\HashedPassword;
+use NicolasLefevre\LeBonCode\Core\Domain\ValueObject\UserId;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Entity\RegisterUser;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\EmailAlreadyRegisteredValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\Error\UserIdAlreadyExistsValidationError;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\RegisterUserRepository\RegisterUserRepository;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Email;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Firstname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\HashedPassword;
 use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\Lastname;
-use NicolasLefevre\LeBonCode\User\RegisterUser\Domain\ValueObject\UserId;
 
 final class InMemoryRegisterUserRepository implements RegisterUserRepository
 {
