@@ -2,11 +2,16 @@ parameters:
     kernel.app_dir: '%kernel.project_dir%/app'
     kernel.core_dir: '%kernel.app_dir%/Core/src'
     kernel.modules_dir: '%kernel.app_dir%/Module'
+    jwt_secret: '%env(string:JWT_SECRET_KEY)%'
+    jwt_algorithm: '%env(string:JWT_ALGORITHM)%'
 
 services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $jwtSecret: '%jwt_secret%'
+            $jwtAlgorithm: '%jwt_algorithm%'
 
     NicolasLefevre\LeBonCode\Core\:
         resource: '%kernel.core_dir%/'

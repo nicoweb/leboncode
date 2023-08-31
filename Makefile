@@ -90,7 +90,7 @@ php-cs-fix: ## Run fix PHP-CS-Fixer
 .PHONY: php-cs-fix
 
 php-cs-fixer: ## Run PHP-CS-Fixer
-	$(SYMFONY_PHP) vendor/bin/php-cs-fixer fix --dry-run --no-interaction --diff
+	$(SYMFONY_PHP) vendor/bin/php-cs-fixer fix --dry-run --no-interaction --diff --verbose --show-progress=dots
 .PHONY: php-cs-fixer
 
 rector: ## Run Rector dry-run
@@ -116,8 +116,7 @@ qa: ## Run all the QA tools
 	$(MAKE) deptrac
 	$(MAKE) security
 	$(MAKE) rector-ci
-	$(MAKE) phpunit
-	$(MAKE) e2e-progress
+	$(MAKE) test
 .PHONY: qa
 
 # Database

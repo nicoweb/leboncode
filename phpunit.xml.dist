@@ -22,9 +22,11 @@
     <testsuites>
         <testsuite name="unit_tests">
             <directory>app/Module/User/tests/Unit</directory>
+            <directory>app/Module/Advert/tests/Unit</directory>
         </testsuite>
         <testsuite name="int_tests">
             <directory>app/Module/User/tests/Integration</directory>
+            <directory>app/Module/Advert/tests/Integration</directory>
         </testsuite>
     </testsuites>
 
@@ -32,6 +34,7 @@
         <include>
             <directory suffix=".php">app/Core/src</directory>
             <directory suffix=".php">app/Module/User/src</directory>
+            <directory suffix=".php">app/Module/Advert/src</directory>
         </include>
     </coverage>
 

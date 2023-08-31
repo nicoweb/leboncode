@@ -1,0 +1,47 @@
+deptrac:
+  paths:
+    - app/Module/Advert/src/CreateAdvert
+  exclude_files: ~
+  layers:
+    - name: CreateAdvert\Domain
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Advert\\CreateAdvert\\Domain\\.*
+    - name: CreateAdvert\Application
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Advert\\CreateAdvert\\Application\\.*
+    - name: CreateAdvert\Infrastructure
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Advert\\CreateAdvert\\Infrastructure\\.*
+    - name: CreateAdvert\Presentation
+      collectors:
+        - type: bool
+          must:
+            - type: className
+              regex: ^NicolasLefevre\\LeBonCode\\Advert\\CreateAdvert\\Presentation\\.*
+  ruleset:
+    CreateAdvert\Domain:
+      - Core\Domain
+    CreateAdvert\Application:
+      - CreateAdvert\Domain
+      - Core\Application
+      - Core\Domain
+    CreateAdvert\Infrastructure:
+      - CreateAdvert\Domain
+      - Core\Infrastructure
+      - Core\Domain
+      - Vendor
+    CreateAdvert\Presentation:
+      - CreateAdvert\Application
+      - Core\Infrastructure
+      - Core\Presentation
+      - Core\Application
+      - Vendor
