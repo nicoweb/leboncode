@@ -1,0 +1,21 @@
+parameters:
+  kernel.advert_dir: '%kernel.modules_dir%/Advert/src'
+  kernel.advert_features_dir: '%kernel.modules_dir%/Advert/Features'
+  kernel.advert_tests_dir: '%kernel.modules_dir%/Advert/tests'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  NicolasLefevre\LeBonCode\Advert\:
+    resource: '%kernel.advert_dir%/'
+    exclude:
+      - '%kernel.advert_dir%/*/Domain/{Error,Model,ValueObject,Entity}/'
+      - '%kernel.advert_dir%/*/{Infrastructure,Application}/**/{InMemory,Stub}*.php'
+
+  _instanceof:
+    NicolasLefevre\LeBonCode\Core\Domain\CommandHandler:
+      tags: [ 'messenger.message_handler' ]
+    NicolasLefevre\LeBonCode\Core\Presentation\Action:
+      tags: [ 'controller.service_arguments' ]

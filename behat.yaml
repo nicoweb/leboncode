@@ -1,3 +1,4 @@
 imports:
     - 'app/Core/config/behat.yaml'
     - 'app/Module/User/config/behat/user.yaml'
+    - 'app/Module/Advert/config/behat/advert.yaml'

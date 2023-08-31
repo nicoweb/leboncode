@@ -3,6 +3,7 @@
 $finder = (new PhpCsFixer\Finder())
     ->in(__DIR__)
     ->exclude('var')
+    ->notPath('app/Module/Advert/src/CreateAdvert/Domain/FrenchPostalCode.php')
 ;
 
 return (new PhpCsFixer\Config())

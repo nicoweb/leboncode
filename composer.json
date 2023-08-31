@@ -66,7 +66,8 @@
     "autoload": {
         "psr-4": {
             "NicolasLefevre\\LeBonCode\\Core\\": "app/Core/src/",
-            "NicolasLefevre\\LeBonCode\\User\\": "app/Module/User/src/"
+            "NicolasLefevre\\LeBonCode\\User\\": "app/Module/User/src/",
+            "NicolasLefevre\\LeBonCode\\Advert\\": "app/Module/Advert/src/"
         }
     },
     "autoload-dev": {
@@ -74,7 +75,9 @@
             "NicolasLefevre\\LeBonCode\\Core\\Tests\\": "app/Core/tests/",
             "NicolasLefevre\\LeBonCode\\User\\Tests\\": "app/Module/User/tests/",
             "NicolasLefevre\\LeBonCode\\Core\\Features\\": "app/Core/Features/",
-            "NicolasLefevre\\LeBonCode\\User\\Features\\": "app/Module/User/Features/"
+            "NicolasLefevre\\LeBonCode\\User\\Features\\": "app/Module/User/Features/",
+            "NicolasLefevre\\LeBonCode\\Advert\\Features\\": "app/Module/Advert/Features/",
+            "NicolasLefevre\\LeBonCode\\Advert\\Tests\\": "app/Module/Advert/tests/"
         }
     },
     "replace": {

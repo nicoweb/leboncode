@@ -1,3 +1,4 @@
 imports:
     - { resource: 'app/Core/config/deptrac.core.yaml', suite: "core" }
     - { resource: 'app/Module/User/config/deptrac/deptrac.user.yaml', suite: "auth" }
+    - { resource: 'app/Module/Advert/config/deptrac/deptrac.advert.yaml', suite: "advert" }

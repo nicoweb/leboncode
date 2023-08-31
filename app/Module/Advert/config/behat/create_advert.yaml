@@ -1,0 +1,8 @@
+default:
+  suites:
+    create_advert:
+      paths:
+        - '%paths.base%/app/Module/Advert/Features/CreateAdvert'
+      contexts:
+        - NicolasLefevre\LeBonCode\Core\Features\Context\DoctrineContext
+        - NicolasLefevre\LeBonCode\Advert\Features\CreateAdvert\CreateAdvertContext
