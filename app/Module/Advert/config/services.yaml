@@ -17,5 +17,7 @@ services:
   _instanceof:
     NicolasLefevre\LeBonCode\Core\Domain\CommandHandler:
       tags: [ 'messenger.message_handler' ]
+    NicolasLefevre\LeBonCode\Core\Domain\QueryHandler:
+      tags: [ 'messenger.message_handler' ]
     NicolasLefevre\LeBonCode\Core\Presentation\Action:
       tags: [ 'controller.service_arguments' ]

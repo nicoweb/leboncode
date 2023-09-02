@@ -1,0 +1,8 @@
+default:
+  suites:
+    get_advert:
+      paths:
+        - '%paths.base%/app/Module/Advert/Features/GetAdvert'
+      contexts:
+        - NicolasLefevre\LeBonCode\Core\Features\Context\DoctrineContext
+        - NicolasLefevre\LeBonCode\Advert\Features\GetAdvert\GetAdvertContext

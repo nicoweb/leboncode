@@ -21,6 +21,13 @@ final readonly class Price
         return new self((int) ($value * 100));
     }
 
+    public static function fromInt(int $value): self
+    {
+        self::validate($value);
+
+        return new self($value);
+    }
+
     private static function validate(float $value): void
     {
         if ($value <= 0) {

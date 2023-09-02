@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NicolasLefevre\LeBonCode\Core\Infrastructure\Listener;
+namespace NicolasLefevre\LeBonCode\Advert\GetAdvert\Infrastructure\Listener;
 
-use NicolasLefevre\LeBonCode\Core\Domain\Error\SingleValidationError;
-use NicolasLefevre\LeBonCode\Core\Domain\Error\ValidationError;
+use NicolasLefevre\LeBonCode\Advert\GetAdvert\Domain\Error\AdvertDeletedError;
+use NicolasLefevre\LeBonCode\Advert\GetAdvert\Domain\Error\AdvertNotFoundError;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 
-final class ValidationErrorListener implements EventSubscriberInterface
+final class AdvertNotFoundSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
@@ -30,25 +30,20 @@ final class ValidationErrorListener implements EventSubscriberInterface
             $exception = $exception->getPrevious();
         }
 
-        if (!$exception instanceof ValidationError && !$exception instanceof SingleValidationError) {
+        if (!$exception instanceof AdvertNotFoundError && !$exception instanceof AdvertDeletedError) {
             return;
         }
 
-        $violations = [];
-
-        foreach ($exception->violations->items as $violation) {
-            $violations[] = ['field' => $violation->propertyPath, 'error' => $violation->message];
-        }
+        $statusCode = Response::HTTP_NOT_FOUND;
 
         $payload = [
-            'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
-            'message' => 'Validation error',
-            'violations' => $violations,
+            'code' => $statusCode,
+            'message' => 'advert_not_found',
         ];
 
         $event->setResponse(new JsonResponse(
             $payload,
-            Response::HTTP_UNPROCESSABLE_ENTITY,
+            $statusCode,
         ));
     }
 }
