@@ -10,3 +10,4 @@ services:
     NicolasLefevre\LeBonCode\User\Features\RegisterUser\RegisterUserContext: ~
     NicolasLefevre\LeBonCode\User\Features\AuthenticateUser\AuthenticateUserContext: ~
     NicolasLefevre\LeBonCode\Advert\Features\CreateAdvert\CreateAdvertContext: ~
+    NicolasLefevre\LeBonCode\Advert\Features\GetAdvert\GetAdvertContext: ~

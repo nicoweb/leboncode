@@ -5,32 +5,18 @@ declare(strict_types=1);
 namespace NicolasLefevre\LeBonCode\User\Features\AuthenticateUser;
 
 use Behat\Behat\Context\Context;
-use Doctrine\ORM\EntityManagerInterface;
 use NicolasLefevre\LeBonCode\Core\Features\Context\CoreContext;
 use NicolasLefevre\LeBonCode\Core\Infrastructure\Persistence\Doctrine\Entity\User;
 use NicolasLefevre\LeBonCode\Core\Infrastructure\Service\StubUuidGenerator;
 use PHPUnit\Framework\Assert;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Uid\Uuid;
 
 final class AuthenticateUserContext extends CoreContext implements Context
 {
-    private readonly string $email;
-    private readonly string $password;
-
-    public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly PasswordHasherInterface $passwordHasher,
-        KernelBrowser $browser
-    ) {
-        parent::__construct($browser);
-    }
-
     /**
      * @Given /^I have previously registered with valid credentials$/
      */
-    public function iHavePreviouslyRegisteredWithValidCredentials()
+    public function iHavePreviouslyRegisteredWithValidCredentials(): void
     {
         $this->email = 'jane.doe@test.com';
         $this->password = 'Password123!';
@@ -67,7 +53,7 @@ final class AuthenticateUserContext extends CoreContext implements Context
     /**
      * @Given /^I should receive an access token$/
      */
-    public function iShouldReceiveAnAccessToken()
+    public function iShouldReceiveAnAccessToken(): void
     {
         Assert::assertArrayHasKey('access_token', json_decode($this->browser->getResponse()->getContent(), true));
     }
@@ -75,7 +61,7 @@ final class AuthenticateUserContext extends CoreContext implements Context
     /**
      * @Given /^I should receive a refresh token$/
      */
-    public function iShouldReceiveARefreshToken()
+    public function iShouldReceiveARefreshToken(): void
     {
         Assert::assertArrayHasKey('refresh_token', json_decode($this->browser->getResponse()->getContent(), true));
     }

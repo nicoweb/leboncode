@@ -1,2 +1,3 @@
 imports:
   - 'create_advert.yaml'
+  - 'get_advert.yaml'
