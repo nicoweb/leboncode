@@ -45,7 +45,7 @@
         "phpstan/phpstan-doctrine": "*",
         "phpstan/phpstan-phpunit": "*",
         "phpstan/phpstan-symfony": "*",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^10.4",
         "qossmic/deptrac-shim": "*",
         "rector/rector": "*",
         "symfony/browser-kit": "6.3.*",
